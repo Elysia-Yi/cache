@@ -59,16 +59,4 @@ http.ListenAndServe(":8001", peers)
 v, err := g.Get("Tom")
 ```
 
-## 架构流程
 
-```
-Get(key) → 本地命中? → 直接返回
-              ↓ 未命中
-         PickPeer (一致性哈希)
-              ↓
-         远程节点有? → Protobuf 拉取 → 返回并回填本地
-              ↓ 没有
-         Singleflight 合并并发
-              ↓
-         Getter 回源 → 写入缓存 → 返回
-```
