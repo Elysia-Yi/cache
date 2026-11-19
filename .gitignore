@@ -1,0 +1,11 @@
+# 编译产物
+*.exe
+*.test
+*.out
+
+# 本地演示程序构建结果
+bin/
+
+# IDE
+.idea/
+.vscode/

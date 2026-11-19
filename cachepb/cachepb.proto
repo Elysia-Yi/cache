@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package cachepb;
+
+option go_package = "./cachepb";
+
+// GetRequest 节点间缓存查询请求
+message GetRequest {
+  string group = 1;
+  string key   = 2;
+}
+
+// GetResponse 节点间缓存查询响应
+message GetResponse {
+  bytes value  = 1;
+}
+
+// GroupCache 节点间远程通信 gRPC 服务定义
+service GroupCache {
+  rpc Get(GetRequest) returns (GetResponse);
+}
